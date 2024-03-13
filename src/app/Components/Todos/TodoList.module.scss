@@ -1,0 +1,40 @@
+
+.wrapper{
+    @apply w-[1500px] mx-auto py-24 text-center
+}
+.addBtn, .deleteBtn{
+    @apply h-[60px] text-white rounded-md transition-all duration-500
+}
+.controlsWrapper{
+    @apply w-[400px] mx-auto
+}
+.addBtn{
+    &:hover{
+        @apply bg-green-700
+    }
+    @apply bg-green-500 w-[400px]
+}
+.deleteBtn{
+    &:hover{
+        @apply bg-red-700
+    }
+    @apply bg-red-500 w-[320px] my-3
+}
+.todoWrapper{
+    @apply mx-auto w-[400px] h-[250px] p-4 m-8 bg-white rounded-md text-center
+}
+.titleWrapper{
+    @apply flex justify-evenly items-center
+}
+.title{
+    @apply text-center text-[$text-lg]
+}
+.checkbox{
+    @apply block w-5 h-5
+}
+.desc{
+    @apply text-slate-300 max-w-[350px] truncate
+}
+.controls{
+    @apply my-5
+}

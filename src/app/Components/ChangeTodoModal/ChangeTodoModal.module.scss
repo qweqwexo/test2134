@@ -1,0 +1,6 @@
+.checkboxWrapper{
+    @apply flex justify-center items-center my-3
+}
+.checkbox{
+    @apply w-[20px] h-[20px] cursor-pointer ml-3
+}

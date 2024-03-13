@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './variables.scss';
+
+*,
+html,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom left, #D7DFEA, #FFFFFF), #D7DFEA;
+}
+span, p{
+    font-size: $font-md;
+}
+h5{
+    font-size: $font-lg;
+}
+ol, ul {
+    list-style: none;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}

@@ -1,0 +1,9 @@
+.button{
+    &:hover{
+        @apply bg-slate-200
+    }
+    & svg{
+        @apply block mx-auto
+    }
+    @apply w-[150px] h-[50px] mx-2 border-2 border-slate-300 transition-all duration-500 cursor-pointer
+}
