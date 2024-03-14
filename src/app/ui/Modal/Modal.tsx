@@ -7,12 +7,9 @@ export default function Modal(
     {isOpen, setIsOpen, title, children}:
     {isOpen: boolean, setIsOpen: Dispatch<SetStateAction<boolean>>,
     title: string, children: React.ReactNode | React.ReactNode[]}) {
-    const closeModalHandler = () => {
-        setIsOpen(false)
-    }
     return (
     <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className={styles.Dialog} onClose={closeModalHandler}>
+        <Dialog as="div" className={styles.Dialog} onClose={setIsOpen}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

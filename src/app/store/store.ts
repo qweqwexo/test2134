@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { todosReducer } from "./todos/todos-slice";
 import { filterReducer } from "./filter/filter-slice";
+import { modalReducer } from "./modal/modal-slice";
 
 export const store = configureStore({
     reducer: {
         todosReducer,
-        filter: filterReducer
+        filter: filterReducer,
+        modal: modalReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false

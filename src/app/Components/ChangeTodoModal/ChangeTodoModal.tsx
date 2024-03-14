@@ -1,23 +1,23 @@
 'use client'
 import { useState } from "react"
-import { Dispatch, SetStateAction } from "react"
-import { useAppDispatch } from '@/app/hooks/rtkHooks';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/rtkHooks';
+import { closeModal } from "@/app/store/modal/modal-slice";
 import { changeTodo } from '@/app/store/todos/todos-slice';
-import { v4 } from 'uuid';
 import { ChangeEvent } from 'react';
 import Modal from "@/app/ui/Modal/Modal"
 import { Input } from "@/app/ui/Input/Input"
 import { Button } from "@/app/ui/Button/Button"
 import styles from './ChangeTodoModal.module.scss'
 
-export default function ChangeTodoModal({isOpen, setIsOpen, title, id}:
-  {isOpen: boolean, setIsOpen: Dispatch<SetStateAction<boolean>>, title: string, id: string | undefined}) {
+export default function ChangeTodoModal({isOpen, title}:
+  {isOpen: boolean, title: string}) {
 
 
   const [todoTitle, setTodoTitle] = useState<string | undefined>();
   const [todoDesc, setTodoDesc] = useState<string | undefined>();
   const [isToggled, setIsToggled] = useState(false);
   const dispatch = useAppDispatch();
+  const changeTodoId = useAppSelector(state => state.modal.todoId)
 
   const setTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.target.value);
@@ -29,13 +29,18 @@ export default function ChangeTodoModal({isOpen, setIsOpen, title, id}:
     setIsToggled(prev => !prev)
   }
   const onChangeHandler = () => {
-    dispatch(changeTodo({id, title: todoTitle, desc: todoDesc, completed: isToggled}))
+    dispatch(changeTodo({id: changeTodoId, title: todoTitle, desc: todoDesc, completed: isToggled}))
     setTodoTitle('');
     setTodoDesc('');
+    dispatch(closeModal());
+  }
+
+  const closeModalHandler = () => {
+    dispatch(closeModal());
   }
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={title}>
+    <Modal isOpen={isOpen} setIsOpen={closeModalHandler} title={title}>
                     <Input
                       value={todoTitle}
                       onChange={setTitleHandler}

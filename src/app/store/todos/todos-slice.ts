@@ -115,8 +115,8 @@ const todosSlice = createSlice({
                 state.todos[index].completed = !state.todos[index].completed
             })
             .addCase(changeTodo.fulfilled, (state, action) => {
-                const index = state.todos.findIndex(t => t.id === action.payload.id)
-                state.todos[index] = action.payload;
+                const index = state.todos.findIndex(t => t.id === action.payload.id);
+                state.todos[index] = action.payload as ITodo;
             })
     }
 })
